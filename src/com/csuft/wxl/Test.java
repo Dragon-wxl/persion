@@ -68,10 +68,11 @@ public class Test {
 //        se.close();
 		
 		//三表连接
-		List<Persion> persions=se.selectList("selectPersionWageLevel");
-		for (Persion persion2 : persions) {
-			System.out.println(persion2);
-		}
+//		List<Persion> persions=se.selectList("selectPersionWageLevel");
+//		for (Persion persion2 : persions) {
+//			System.out.println(persion2);
+//		}
+		//
 
 	}
 }

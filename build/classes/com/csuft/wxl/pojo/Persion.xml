@@ -46,31 +46,38 @@
 			</association>
 		</association>
 	</resultMap>
+	<!-- 插入一条语句 在 persion表中-->
 	<insert id="insertOnePersion" parameterType="Persion">
 		INSERT INTO
 		`persion` (`id`, `name`, `birthday`, `sex`, `department`) VALUES
 		(#{id}, #{name}, #{birthday}, #{sex}, #{department});
 	</insert>
+	<!-- 删除一条语句在 persion表中-->
 	<delete id="deleteOnePersion" parameterType="String">
 		delete from persion
 		where id=#{id};
 	</delete>
+	<!-- 选择persion表中的所有数据 -->
 	<select id="selectAll" resultType="Persion">
 		SELECT * FROM persion;
 	</select>
+	<!-- 选择persion表中的所有数据当指定id时 -->
 	<select id="selectOne" parameterType="String"
 		resultType="Persion">
 		SELECT * FROM persion where id=#{id};
 	</select>
+	<!-- 对Persion表的模糊查询 -->
 	<select id="selectVagueName" parameterType="String"
 		resultType="Persion">
 		SELECT * FROM persion where name like "%"#{id}"%";
 	</select>
+	<!-- 使用Map类型进行条件查询 -->
 	<select id="selectNameDepartment" parameterType="Map"
 		resultType="Persion">
 		SELECT * FROM persion where name=#{name} and
 		department=#{department};
 	</select>
+	<!-- persion表和salary表的左连接查询，返回数据类型 salary对象-->
 	<select id="selectPersionWage1" resultMap="salaryBean">
 		select
 		persion.id
@@ -88,6 +95,7 @@
 		persion.department
 		=salary.department;
 	</select>
+	<!-- persion表和salary表的左连接查询，返回数据类型 persion对象-->
 	<select id="selectPersionWage2" resultMap="persionBean">
 		select
 		persion.id
@@ -105,6 +113,7 @@
 		persion.department
 		=salary.department;
 	</select>
+	<!-- 三表进行查询，左连接，使用 -->
 	<select id="selectPersionWageLevel"
 		resultMap="persionWageLevelBean">
 		select

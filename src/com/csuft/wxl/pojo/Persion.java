@@ -7,7 +7,6 @@ public class Persion {
 	private int sex;
 	private String department;
 	private Salary salary;
-
 	public Salary getSalary() {
 		return salary;
 	}
