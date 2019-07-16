@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis/org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.csuft.wxl.pojo">
+	<!-- 一对多返回集合的映射 -->
+	<resultMap type="salary" id="salaryBean">
+		<id column="sid" property="id" />
+		<result column="sdepartment" property="department" />
+		<result column="wage" property="wage" />
+		<collection property="persion" ofType="Persion">
+			<id column="pid" property="id" />
+			<result column="pname" property="name" />
+			<result column="birthday" property="birthday" />
+			<result column="sex" property="sex" />
+			<result column="pdepartment" property="department" />
+		</collection>
+	</resultMap>
+	<!-- 以那个表为主就弄到哪个表中去 以后不要这样子 -->
+	<resultMap type="Persion" id="persionBean">
+		<id column="pid" property="id" />
+		<result column="pname" property="name" />
+		<result column="birthday" property="birthday" />
+		<result column="sex" property="sex" />
+		<result column="pdepartment" property="department" />
+		<association property="salary" javaType="Salary">
+			<id column="sid" property="id" />
+			<result column="sdepartment" property="department" />
+			<result column="wage" property="wage" />
+		</association>
+	</resultMap>
+	<!-- 连接三表 -->
+	<resultMap type="Persion" id="persionWageLevelBean">
+		<id column="pid" property="id" />
+		<result column="pname" property="name" />
+		<result column="birthday" property="birthday" />
+		<result column="sex" property="sex" />
+		<result column="pdepartment" property="department" />
+		<association property="salary" javaType="Salary">
+			<id column="sid" property="id" />
+			<result column="sdepartment" property="department" />
+			<result column="srank" property="rank" />
+			<result column="wage" property="wage" />
+			<association property="level" javaType="Level">
+				<id column="lid" property="id" />
+				<result column="lrank" property="rank" />
+				<result column="define" property="define" />
+			</association>
+		</association>
+	</resultMap>
+	<insert id="insertOnePersion" parameterType="Persion">
+		INSERT INTO
+		`persion` (`id`, `name`, `birthday`, `sex`, `department`) VALUES
+		(#{id}, #{name}, #{birthday}, #{sex}, #{department});
+	</insert>
+	<delete id="deleteOnePersion" parameterType="String">
+		delete from persion
+		where id=#{id};
+	</delete>
+	<select id="selectAll" resultType="Persion">
+		SELECT * FROM persion;
+	</select>
+	<select id="selectOne" parameterType="String"
+		resultType="Persion">
+		SELECT * FROM persion where id=#{id};
+	</select>
+	<select id="selectVagueName" parameterType="String"
+		resultType="Persion">
+		SELECT * FROM persion where name like "%"#{id}"%";
+	</select>
+	<select id="selectNameDepartment" parameterType="Map"
+		resultType="Persion">
+		SELECT * FROM persion where name=#{name} and
+		department=#{department};
+	</select>
+	<select id="selectPersionWage1" resultMap="salaryBean">
+		select
+		persion.id
+		'pid',
+		persion.name 'pname',
+		persion.birthday,
+		persion.sex,
+		persion.department
+		'pdepartment',
+		salary.id 'sid',
+		salary.department
+		'sdepartment',
+		wage
+		From persion left join salary on
+		persion.department
+		=salary.department;
+	</select>
+	<select id="selectPersionWage2" resultMap="persionBean">
+		select
+		persion.id
+		'pid',
+		persion.name 'pname',
+		persion.birthday,
+		persion.sex,
+		persion.department
+		'pdepartment',
+		salary.id 'sid',
+		salary.department
+		'sdepartment',
+		wage
+		From persion left join salary on
+		persion.department
+		=salary.department;
+	</select>
+	<select id="selectPersionWageLevel"
+		resultMap="persionWageLevelBean">
+		select
+		persion.id 'pid',
+		persion.name 'pname',
+		persion.birthday,
+		persion.sex,
+		persion.department
+		'pdepartment',
+		salary.id 'sid',
+		salary.department
+		'sdepartment',
+		salary.wage,
+		salary.rank 'srank',
+		level.id lid,
+		level.rank 'lrank',
+		level.define
+		From
+		persion left
+		join salary on
+		persion.department
+		=salary.department left
+		join level on
+		salary.rank=level.rank
+	</select>
+
+
+	<update id="updateOnePersion" parameterType="Persion">
+		update persion set
+		name=#{name} where id=#{id} ;
+	</update>
+</mapper>
