@@ -9,9 +9,9 @@ import com.csuft.wxl.mapper.PersionMap;
 import com.csuft.wxl.mapper.SalaryMap;
 import com.csuft.wxl.pojo.Persion;
 
-public class NoteTest {
+public class C3p0Test {
 	public static void main(String[] args) {
-		SqlSession se = (SqlSession) SessionNote.getSession();
+		SqlSession se = (SqlSession) SessionC3p0.getSession();
 		PersionMap persionMap = se.getMapper(PersionMap.class);
 		SalaryMap salaryMap = se.getMapper(SalaryMap.class);
 		LevelMap levelMap = se.getMapper(LevelMap.class);
@@ -84,20 +84,18 @@ public class NoteTest {
 //		int a=persionMap.insertSqlProvider(persion);
 //		System.out.println("受影响的行数"+a);
 //		se.commit();
-		
-		//分页
-		int a=(int)persionMap.selectCount()/25;
-		for (int i = 0; i <a ;i++) {
-			System.out.println("第"+i+"页");
-			List<Persion> list=persionMap.selectPageSatrtEnd(i*25,25);
-			se.commit();
+
+		// 分页
+		int a = (int) persionMap.selectCount() / 25;
+		for (int i = 0; i < a; i++) {
+			System.out.println("第" + i + "页");
+			List<Persion> list = persionMap.selectPageSatrtEnd(i * 25, 25);
 			for (Persion persion : list) {
 				System.out.println(persion);
-			}			
+			}
 		}
-System.out.println();
-		
-				
+		se.commit();
+		System.out.println();
 
 	}
 }

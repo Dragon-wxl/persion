@@ -24,7 +24,9 @@ public class GetCsv {
 			persion.setSex(Integer.parseInt(csvReader.get(3)));
 			persion.setDepartment(csvReader.get(4));
 			persionslist.add(persion);
+			System.out.println(persion);
 		}
+		
 		SqlSession se = Session.getSession();
 		int sum = 0;
 		for (Persion persion : persionslist) {

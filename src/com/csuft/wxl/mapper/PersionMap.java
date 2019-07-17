@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -58,4 +59,12 @@ public interface PersionMap {
 	
 	@InsertProvider(type=PersionDynaSql.class,method="add")
 	public int insertSqlProvider(Persion persion);
+
+	//	分页
+	@Select("SELECT * FROM persion limit #{start},#{end};")
+	public List<Persion> selectPageSatrtEnd(@Param("start")int start,@Param("end")int end);
+	
+	@Select("SELECT count(*) FROM persion")
+	public int selectCount();
+	
 }
