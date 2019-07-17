@@ -5,10 +5,12 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 
 import com.csuft.wxl.pojo.Persion;
@@ -51,5 +53,9 @@ public interface PersionMap {
 	})
 	public List<Persion> persionSalaryList();
 	
-
+	@SelectProvider(type=PersionDynaSql.class,method="list")
+	public List<Persion> selectSqlProvider(Map map);
+	
+	@InsertProvider(type=PersionDynaSql.class,method="add")
+	public int insertSqlProvider(Persion persion);
 }

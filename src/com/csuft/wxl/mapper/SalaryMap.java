@@ -23,6 +23,15 @@ public interface SalaryMap {
         column = "department", many = @Many(select = "com.csuft.wxl.mapper.PersionMap.persionListById"))})
 	public List<Salary> selectSalaryPersions();
 	
+	@Select("select * from salary where rank=#{rank}")
+	@Results({ 
+		@Result(id=true,property="id",column="id"),
+		@Result(property="wage",column="wage"),
+		@Result(property="department",column="department"),
+		@Result(property = "persion",
+        column = "department", many = @Many(select = "com.csuft.wxl.mapper.PersionMap.persionListById"))})
+	public List<Salary> selectSalaryPersionsRank(int rank);
+	
 	@Select("select * from salary where department=#{department}")
 	@Results({ 
 		@Result(id=true,property="id",column="id"),
