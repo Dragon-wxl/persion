@@ -46,13 +46,13 @@
 			</association>
 		</association>
 	</resultMap>
-	<!-- 插入一条语句 在 persion表中-->
+	<!-- 插入一条语句 在 persion表中 -->
 	<insert id="insertOnePersion" parameterType="Persion">
 		INSERT INTO
 		`persion` (`id`, `name`, `birthday`, `sex`, `department`) VALUES
 		(#{id}, #{name}, #{birthday}, #{sex}, #{department});
 	</insert>
-	<!-- 删除一条语句在 persion表中-->
+	<!-- 删除一条语句在 persion表中 -->
 	<delete id="deleteOnePersion" parameterType="String">
 		delete from persion
 		where id=#{id};
@@ -69,7 +69,8 @@
 	<!-- 对Persion表的模糊查询 -->
 	<select id="selectVagueName" parameterType="String"
 		resultType="Persion">
-		SELECT * FROM persion where name like "%"#{id}"%";
+		<bind name="likename" value="'%'+name+'%'"></bind>
+		SELECT * FROM persion where name like #{likename};
 	</select>
 	<!-- 使用Map类型进行条件查询 -->
 	<select id="selectNameDepartment" parameterType="Map"
@@ -77,7 +78,7 @@
 		SELECT * FROM persion where name=#{name} and
 		department=#{department};
 	</select>
-	<!-- persion表和salary表的左连接查询，返回数据类型 salary对象-->
+	<!-- persion表和salary表的左连接查询，返回数据类型 salary对象 -->
 	<select id="selectPersionWage1" resultMap="salaryBean">
 		select
 		persion.id
@@ -95,7 +96,7 @@
 		persion.department
 		=salary.department;
 	</select>
-	<!-- persion表和salary表的左连接查询，返回数据类型 persion对象-->
+	<!-- persion表和salary表的左连接查询，返回数据类型 persion对象 -->
 	<select id="selectPersionWage2" resultMap="persionBean">
 		select
 		persion.id
@@ -139,10 +140,40 @@
 		join level on
 		salary.rank=level.rank
 	</select>
-
+	<!-- if标签 -->
+	<!-- 使用where标签括起来的if标签,当条件不成立是会自动去除 -->
+	<!-- 当添加where标签时应去除where字段 -->
+	<select id="selectIfname" parameterType="Map"
+		resultType="Persion">
+		SELECT * FROM persion
+		<where>
+			<if test="id!=null">
+				and id like "%"#{id}"%"
+			</if>
+			<if test="name!=null">
+				and name like "%"#{name}"%"
+			</if>
+		</where>
+	</select>
 
 	<update id="updateOnePersion" parameterType="Persion">
 		update persion set
 		name=#{name} where id=#{id} ;
 	</update>
+	<update id="updateOnePersionWhileId" parameterType="Persion">
+		update persion
+		<set>
+			<if test="birthday!=null">birthday=#{birthday}, </if>
+			<if test="department!=null">department=#{department} ,</if>
+			<if test="name!=null">name=#{name} </if>
+		</set>
+		where id=#{id} ;
+	</update>
+	<select id="selectForeach" resultType="Persion">
+		select * from persion where id
+		in 
+		<foreach item="item" index="index" open="(" separator="," close=")" collection="list" >
+			#{item}
+		</foreach>
+	</select>
 </mapper>
