@@ -5,6 +5,9 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -26,5 +29,27 @@ public interface PersionMap {
 	// 查询全部
 	@Select("SELECT * FROM persion")
 	public List<Persion> list();
+	
+	@Select("SELECT * FROM persion where department=#{sdepartment}")
+	@Results({
+		@Result(id=true,property="id",column="id"),
+		@Result(property="department",column="department"),
+		@Result(property="name",column="name"),
+		@Result(property="birthday",column="birthday"),
+		@Result(property="sex",column="sex")
+	})
+	public List<Persion> persionListById(String sdepartment);
+	
+	@Select("SELECT * FROM persion")
+	@Results({
+		@Result(id=true,property="id",column="id"),
+		@Result(property="department",column="department"),
+		@Result(property="name",column="name"),
+		@Result(property="birthday",column="birthday"),
+		@Result(property="sex",column="sex"),
+		@Result(property="salary",column="department",one=@One(select="com.csuft.wxl.mapper.SalaryMap.selectSalaryPersionsByDepartment"))
+	})
+	public List<Persion> persionSalaryList();
+	
 
 }

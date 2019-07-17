@@ -22,6 +22,7 @@
 		<!-- <mapper resource="com/csuft/wxl/pojo/Persion.xml" /> -->
 		<!-- 使用注解需要建立接口文件进行配置 -->
 		<mapper class="com.csuft.wxl.mapper.PersionMap"/>
+		<mapper class="com.csuft.wxl.mapper.SalaryMap"/>
 	</mappers>
 
 </configuration>
