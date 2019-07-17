@@ -59,7 +59,7 @@
 	</delete>
 	<!-- 选择persion表中的所有数据 -->
 	<select id="selectAll" resultType="Persion">
-		SELECT * FROM persion;
+		SELECT * FROM persion
 	</select>
 	<!-- 选择persion表中的所有数据当指定id时 -->
 	<select id="selectOne" parameterType="String"

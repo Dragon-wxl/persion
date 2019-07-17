@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+<!-- 设置别名 -->
+	<typeAliases>
+		<package name="com.csuft.wxl.pojo" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://localhost:3306/mydb?characterEncoding=UTF-8" />
+				<property name="username" value="root" />
+				<property name="password" value="1234" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+	<!-- 下面这行是否保留随意 -->
+		<!-- <mapper resource="com/csuft/wxl/pojo/Persion.xml" /> -->
+		<!-- 使用注解需要建立接口文件进行配置 -->
+		<mapper class="com.csuft.wxl.mapper.PersionMap"/>
+	</mappers>
+
+</configuration>

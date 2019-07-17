@@ -1,6 +1,5 @@
 package com.csuft.wxl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,12 +7,11 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.csuft.wxl.pojo.Persion;
-import com.csuft.wxl.pojo.Salary;
 
-public class Test {
+public class XmlTest {
 	public static void main(String[] args) {
 		Persion persion = new Persion(3, "世界", "1990-1-1", 0, "开发部");
-		SqlSession se = Session.getSession();
+		SqlSession se = (SqlSession) Session.getSession();
 //		int a = 0;
 //		try {
 ////			a = se.delete("deleteOnePersion", "2");
