@@ -12,6 +12,7 @@ public class test {
 		List<Integer> b = new ArrayList<Integer>();
 		for (int i = 0; i < 10; i++) {
 			int a=(int)(Math.random()*5+1);
+			b.add(a);
 		}
 		
 		
