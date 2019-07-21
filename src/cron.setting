@@ -1,0 +1,2 @@
+[com.csuft.wxl.hutool]
+HutoolCronTask.run = */2 * * * * ?

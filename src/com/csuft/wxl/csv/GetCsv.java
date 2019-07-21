@@ -3,6 +3,7 @@ package com.csuft.wxl.csv;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+import org.apache.catalina.valves.rewrite.Substitution.StaticElement;
 import org.apache.ibatis.session.SqlSession;
 
 import com.csuft.wxl.Session;
@@ -10,7 +11,7 @@ import com.csuft.wxl.pojo.Persion;
 import com.csvreader.CsvReader;
 
 public class GetCsv {
-	public static void main(String[] args) throws Exception {
+	public static ArrayList<Persion> getPersions() throws Exception{
 		CsvReader csvReader = new CsvReader("C:\\Users\\Administrator\\Desktop\\练习\\persion.csv", ',',
 				Charset.forName("GBK"));
 		csvReader.readHeaders();
@@ -24,8 +25,12 @@ public class GetCsv {
 			persion.setSex(Integer.parseInt(csvReader.get(3)));
 			persion.setDepartment(csvReader.get(4));
 			persionslist.add(persion);
-			System.out.println(persion);
 		}
+		return persionslist;
+	}
+	public static void main(String[] args) throws Exception {
+		
+		ArrayList<Persion> persionslist = GetCsv.getPersions();
 		
 		SqlSession se = Session.getSession();
 		int sum = 0;
