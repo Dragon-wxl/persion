@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<br> <br> <br>
-		<form onSubmit="return verify();" action="PersionAddServlet" class="form-group" method="post">
+		<form class="form-group">
 		<table>
 			<tr>
 				<td><label for="name" class="col-sm-2 col-form-label"
@@ -57,30 +57,20 @@
 		</table>
 		</form>
 		<script src="bootstrap-4.3.1/jquery.min.js"></script>
-		<script type="text/javascript">
-		function verify() {
-        var name = $("*[name='name']").val();
-        var sex = $("*[name='sex']").val();
-        var birthday = $("*[name='birthday']").val();
-		var department = $("*[name='department']").val();
-        if (name==null||name=="") {
+		<script>
+		$("#sender").click(function(){
+			var name=document.getElementById("name").value;
+			var birthday=document.getElementById("birthday").value;
+			var sex=document.getElementById("sex").value;
+			var department=document.getElementById("department").value;
+			if (name==null||name=="") {
             alert('请输入name');
             return false;
         }
         if(birthday==''|| name==null){
             alert('请补birthday');
             return false;
-        }
-		}
-		</script>
-		<script>
-			
-			document.write(name);
-		$("#sender").click(function(){
-			var name=document.getElementById("name").value;
-			var birthday=document.getElementById("birthday").value;
-			var sex=document.getElementById("sex").value;
-			var department=document.getElementById("department").value;
+        };
 			var persion={"name":name,"birthday":birthday,"sex":sex,"department":department};
 			var url="submitServlet";
 			$.post(

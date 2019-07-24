@@ -78,6 +78,10 @@
 		SELECT * FROM persion where name=#{name} and
 		department=#{department};
 	</select>
+	<select id="selectLimitPersion" parameterType="Map"
+		resultType="Persion">
+		select * from persion limit #{start},#{length};
+	</select>
 	<!-- persion表和salary表的左连接查询，返回数据类型 salary对象 -->
 	<select id="selectPersionWage1" resultMap="salaryBean">
 		select

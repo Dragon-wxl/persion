@@ -77,7 +77,7 @@
 		<url-pattern>/editPersion</url-pattern>
 	</servlet-mapping>
 	<!-- PersionUpdateServlet -->
-		<servlet>
+	<servlet>
 		<servlet-name>PersionUpdateServlet</servlet-name>
 		<servlet-class>com.csuft.wxl.servlet.PersionUpdateServlet</servlet-class>
 	</servlet>
@@ -85,4 +85,32 @@
 		<servlet-name>PersionUpdateServlet</servlet-name>
 		<url-pattern>/updatePersion</url-pattern>
 	</servlet-mapping>
+	<!-- PersionUpdateServlet -->
+	<servlet>
+		<servlet-name>JsonSubmitServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.JsonSubmitServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JsonSubmitServlet</servlet-name>
+		<url-pattern>/submitServlet</url-pattern>
+	</servlet-mapping>
+	<!-- JsonGetOneServlet -->
+	<servlet>
+		<servlet-name>JsonGetOneServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.JsonGetOneServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JsonGetOneServlet</servlet-name>
+		<url-pattern>/getOnePersion</url-pattern>
+	</servlet-mapping>
+	<!-- JsonGetManyServlet -->
+	<servlet>
+		<servlet-name>JsonGetManyServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.JsonGetManyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JsonGetManyServlet</servlet-name>
+		<url-pattern>/getManyPersion</url-pattern>
+	</servlet-mapping>
 </web-app>
+

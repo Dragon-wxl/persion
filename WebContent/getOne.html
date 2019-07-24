@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- boostrap4 -->
+<link rel="stylesheet" type="text/css"
+	href="bootstrap-4.3.1/css/bootstrap.min.css">
+<script src="bootstrap-4.3.1/jquery-3.3.1.slim.min.js"></script>
+<script src="bootstrap-4.3.1/popper.min.js"></script>
+<script src="bootstrap-4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<br><br><br>
+<div style="position: relative;left:10%">
+	<input type="button" id="getOne" name="getOne" value="获取json">
+	<div id="message"></div>
+</div>
+
+
+<script src="bootstrap-4.3.1/jquery.min.js"></script>
+<script>
+	$("#getOne").click(function(){
+		var url="getOnePersion";
+		$.post(
+			url,
+			function(persion){
+				var json=JSON.parse(persion);
+				var name=json.persion.name;
+				var birthday=json.persion.birthday;
+				var sex=json.persion.sex;
+				var department=json.persion.department;
+				 $("#message").html("name:"+name+"<span>&nbsp;&nbsp;&nbsp;<span>birthday:"+birthday+"<span>&nbsp;&nbsp;&nbsp;<span>sex:"+sex+"<span>&nbsp;&nbsp;&nbsp;<span>department:"+department);
+			}
+		);
+	})
+</script>
+
+</body>
+</html>
