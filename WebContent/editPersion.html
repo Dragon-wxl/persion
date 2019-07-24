@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- boostrap4 -->
+<link rel="stylesheet" type="text/css"
+	href="bootstrap-4.3.1/css/bootstrap.min.css">
+<script src="bootstrap-4.3.1/jquery-3.3.1.slim.min.js"></script>
+<script src="bootstrap-4.3.1/popper.min.js"></script>
+<script src="bootstrap-4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<br> <br> <br>
+		<form onSubmit="return verify();" action="PersionAddServlet"
+			class="form-group" method="post">
+			<table>
+				<tr>
+					<td><label for="name" class="col-sm-2 col-form-label"
+						style="text-align: end">name:</label></td>
+					<td><input type="text" value="世界" readonly
+						class="form-control" name="name" value=""></td>
+					<td>&nbsp;修改为：</td>
+					<td><input type="text" class="form-control" name="alter_name"></td>
+				</tr>
+				<tr>
+					<td><label for="birthday" class="col-sm-2 col-form-label"
+						style="text-align: end">birthday:</label></td>
+					<td><input type="text" value="2019-8-8" readonly
+						class="form-control" name="birthday"></td>
+					<td>&nbsp;修改为：</td>
+					<td><input type="date" class="form-control" 
+						name="alter_birthday"></td>
+
+				</tr>
+				<tr>
+					<td><label for="sex" class="col-sm-2 col-form-label"
+						style="text-align: end">sex:</label></td>
+					<td><input type="text" class="form-control" value="男"
+						name="sex"></td>
+					<td><label for="name" class="col-form-label"
+						style="text-align: end">&nbsp;修改为：</label></td>
+					<td><select class="form-control" value="男" name="alter_sex">
+							<option value="1">男</option>
+							<option value="2">女</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><label for="department" class="col-sm-2 col-form-label"
+						style="text-align: end">department:</label></td>
+					<td><input type="text" class="form-control" value="总经理"
+						name="birthday"></td>
+					<td>&nbsp;修改为：</td>
+					<td><select class="form-control" name="alter_department">
+							<option value="人事行政部">人事行政部</option>
+							<option value="市场部">市场部</option>
+							<option value="总经理">总经理</option>
+							<option value="技术一部">技术一部</option>
+							<option value="技术三部">技术三部</option>
+							<option value="技术二部">技术二部</option>
+							<option value="技术部">技术部</option>
+							<option value="财务部">财务部</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><label class="col-sm-2 col-form-label"
+						style="text-align: end"></label> <input type="submit" value="更新"
+						class="btn btn-primary col-sm-4"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<script src="bootstrap-4.3.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		function verify() {
+        var name = $("*[name='alter_name']").val();
+        var sex = $("*[name='alter_sex']").val();
+        var birthday = $("*[name='alter_birthday']").val();
+		var department = $("*[name='alter_department']").val();
+        if (name==null||name=="") {
+            alert('请输入name');
+            return false;
+        }
+        if(birthday==''|| name==null){
+            alert('请补birthday');
+            return false;
+        }
+		}
+		</script>
+
+</body>
+</html>

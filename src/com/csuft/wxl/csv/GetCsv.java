@@ -3,7 +3,6 @@ package com.csuft.wxl.csv;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-import org.apache.catalina.valves.rewrite.Substitution.StaticElement;
 import org.apache.ibatis.session.SqlSession;
 
 import com.csuft.wxl.Session;

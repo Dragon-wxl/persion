@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>Persion_ID</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- HelloServlet类的映射 -->
+	<servlet>
+		<servlet-name>HelloServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.HelloServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServlet</servlet-name>
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+	<!-- LoginSservlet类的映射 -->
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<!-- UploadPhotoServlet -->
+	<servlet>
+		<servlet-name>UploadPhotoServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.UploadPhotoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadPhotoServlet</servlet-name>
+		<url-pattern>/uploadPhoto</url-pattern>
+	</servlet-mapping>
+	<!-- PersionLsst -->
+	<servlet>
+		<servlet-name>PersionListServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.PersionListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PersionListServlet</servlet-name>
+		<url-pattern>/persionList</url-pattern>
+	</servlet-mapping>
+	<!-- PersionAddServlet -->
+	<servlet>
+		<servlet-name>PersionAddServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.PersionAddServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PersionAddServlet</servlet-name>
+		<url-pattern>/PersionAddServlet</url-pattern>
+	</servlet-mapping>
+	<!-- PersionDeleteServlet -->
+	<servlet>
+		<servlet-name>PersionDeleteServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.PersionDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PersionDeleteServlet</servlet-name>
+		<url-pattern>/deletePersion</url-pattern>
+	</servlet-mapping>
+	<!-- editPersion -->
+	<servlet>
+		<servlet-name>PersionEditServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.PersionEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PersionEditServlet</servlet-name>
+		<url-pattern>/editPersion</url-pattern>
+	</servlet-mapping>
+	<!-- PersionUpdateServlet -->
+		<servlet>
+		<servlet-name>PersionUpdateServlet</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.PersionUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PersionUpdateServlet</servlet-name>
+		<url-pattern>/updatePersion</url-pattern>
+	</servlet-mapping>
+</web-app>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body><h1>Hello Servlet!</h1>2019-7-23 16:22:04<table  border="1" style="width: 50%;margin:auto ;border: 2px solid black; border-collapse:collapse" ><tr>
+			<td>113</td>
+			<td>eqwer</td>
+			<td>2019-07-17</td>
+			<td name="sex">1</td>
+            <td>人事行政部</td>
+            <td><a name="113">删除</a></td>
+		</tr></table><script src="bootstrap-4.3.1\jquery.min.js"></script>
+<script>
+var i=	$("td[name='sex']").text();
+j=1;
+for(j=0;j<i.length;j++){
+	if(i[j]==1){
+	document.getElementsByName("sex")[j].innerHTML="男"
+}else if(i[j]==2){
+	document.getElementsByName("sex")[j].innerHTML="女"
+}
+}
+</script></body>
+</html>

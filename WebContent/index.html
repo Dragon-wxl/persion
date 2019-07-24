@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- boostrap4 -->
+<link rel="stylesheet" type="text/css"
+	href="bootstrap-4.3.1/css/bootstrap.min.css">
+<script src="bootstrap-4.3.1/jquery-3.3.1.slim.min.js"></script>
+<script src="bootstrap-4.3.1/popper.min.js"></script>
+<script src="bootstrap-4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<br>
+<h1>index.html</h1>
+<br>
+<a id="persionList" href="">查询所有Persion</a>
+<br>
+<a id="login" href="">login.html</a>
+<br>
+<a id="hello" href="">hello</a>
+<br>
+<a id="upload" href="">upLoad</a>
+<br>
+<a id="addPersion" href="">addPersion</a>
+<br>
+<script>
+    var url="/persion";
+    var persionList=url+"/"+"persionList";
+    document.getElementById("persionList").href=persionList
+    var login=url+"/"+"login.html";
+    document.getElementById("login").href=login
+    var hello=url+"/"+"hello";
+    document.getElementById("hello").href=hello
+    var upload=url+"/"+"upload.html";
+    document.getElementById("upload").href=upload
+    var addPersion=url+"/"+"addPersion.html";
+    document.getElementById("addPersion").href=addPersion
+</script>
+</div>
+</body>
+</html>
