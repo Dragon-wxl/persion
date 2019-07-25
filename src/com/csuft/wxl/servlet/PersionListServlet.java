@@ -38,7 +38,7 @@ public class PersionListServlet extends HttpServlet {
 	public StringBuffer get() {
 		//使用xml的 方式查询
 		SqlSession se = Session.getSession();
-		List<Persion> persions = se.selectList("selectIfname");
+		List<Persion> persions = se.selectList("Ifname");
 		StringBuffer sb = new StringBuffer();
 		sb.append(
 				"<table  border=\"1\" style=\"width: 50%;margin:auto ;border: 2px solid black; border-collapse:collapse\" >");

@@ -112,5 +112,15 @@
 		<servlet-name>JsonGetManyServlet</servlet-name>
 		<url-pattern>/getManyPersion</url-pattern>
 	</servlet-mapping>
+	<!--  PersionListServlet persionPageList -->
+	<servlet>
+		<servlet-name>PersionListServletJsp</servlet-name>
+		<servlet-class>com.csuft.wxl.servlet.jsp.PersionListServletJsp</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PersionListServletJsp</servlet-name>
+		<url-pattern>/persionPageList</url-pattern>
+	</servlet-mapping>
+
 </web-app>
 

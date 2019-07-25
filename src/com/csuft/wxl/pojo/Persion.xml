@@ -59,7 +59,12 @@
 	</delete>
 	<!-- 选择persion表中的所有数据 -->
 	<select id="selectAll" resultType="Persion">
-		SELECT * FROM persion
+		SELECT * FROM persion;
+	</select>
+	<!-- 计数 -->
+	<select id="selectCount" resultType="Integer">
+		SELECT count(*) FROM
+		persion;
 	</select>
 	<!-- 选择persion表中的所有数据当指定id时 -->
 	<select id="selectOne" parameterType="String"
@@ -147,8 +152,7 @@
 	<!-- if标签 -->
 	<!-- 使用where标签括起来的if标签,当条件不成立是会自动去除 -->
 	<!-- 当添加where标签时应去除where字段 -->
-	<select id="selectIfname" parameterType="Map"
-		resultType="Persion">
+	<select id="Ifname" parameterType="Map" resultType="Persion">
 		SELECT * FROM persion Order By id Desc
 		<where>
 			<if test="id!=null">
@@ -176,8 +180,9 @@
 	</update>
 	<select id="selectForeach" resultType="Persion">
 		select * from persion where id
-		in 
-		<foreach item="item" index="index" open="(" separator="," close=")" collection="list" >
+		in
+		<foreach item="item" index="index" open="(" separator=","
+			close=")" collection="list">
 			#{item}
 		</foreach>
 	</select>

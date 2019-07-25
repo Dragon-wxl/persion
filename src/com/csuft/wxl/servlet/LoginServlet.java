@@ -80,7 +80,15 @@ public class LoginServlet extends HttpServlet {
 //			e.printStackTrace();
 //		}
 		
-		
+		request.setCharacterEncoding("UTF-8");
+		String name=request.getParameter("name");
+		String password=request.getParameter("password");
+		if (name.equals("root")&&password.equals("1234")) {
+			request.getSession().setAttribute("account", name);
+			  response.sendRedirect("index.html");
+		}else {
+			response.sendRedirect("fail.html");
+		}
 		
 	}
 }
